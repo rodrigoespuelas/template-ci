@@ -1,15 +1,13 @@
 name: Reusable Workflow
 on: [push, pull_request]
+inputs:
+  message:
+    description: 'Message to display'
+    required: true
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  example:
+    runs:
+      using: 'composite'
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
-    - name: Install dependencies
-      run: npm ci
-    - name: Run tests
-      run: npm test
+      - name: Display message
+        run: echo "${{ inputs.message }}"
