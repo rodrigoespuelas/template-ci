@@ -1,0 +1,10 @@
+name: Dependency Scanning
+on: [push, pull_request]
+jobs:
+ dependency-scan:
+ runs-on: ubuntu-latest
+ steps:
+ - name: Checkout Code
+ uses: actions/checkout@v2
+- name: Run Dependency Check
+ uses: jeremylong/DependencyCheck-Action@v6
